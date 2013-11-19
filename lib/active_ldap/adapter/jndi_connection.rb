@@ -27,6 +27,7 @@ module ActiveLdap
       Control = ldap.Control
 
       CommunicationException = naming.CommunicationException
+      ServiceUnavailableException = naming.ServiceUnavailableException
       NamingException = naming.NamingException
       NameNotFoundException = naming.NameNotFoundException
 
