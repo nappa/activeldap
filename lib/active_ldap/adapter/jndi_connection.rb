@@ -160,8 +160,8 @@ module ActiveLdap
         environment = {
           Context::INITIAL_CONTEXT_FACTORY => "com.sun.jndi.ldap.LdapCtxFactory",
           Context::PROVIDER_URL => ldap_uri,
-          'com.sun.jndi.ldap.connect.timeout' => @timeout.to_s,
-          'com.sun.jndi.ldap.read.timeout' => @timeout.to_s,
+          'com.sun.jndi.ldap.connect.timeout' => (@timeout * 1000).to_i.to_s,
+          'com.sun.jndi.ldap.read.timeout' => (@timeout * 1000).to_i.to_s,
         }
         environment = HashTable.new(environment)
         context = InitialLdapContext.new(environment, nil)
