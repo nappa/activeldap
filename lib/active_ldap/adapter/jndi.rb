@@ -105,6 +105,9 @@ module ActiveLdap
           klass ||= ActiveLdap::LdapError
           raise klass, message
         elsif /LDAP response read timed out/ =~ $!.to_s
+          @connection.unbind if @connection
+          @disconnected = true
+
           raise Timeout::Error.new($!.to_s)
         end
 
